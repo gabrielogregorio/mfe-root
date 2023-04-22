@@ -1,0 +1,36 @@
+name: Deploy Gh Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        npm-version: [9.5.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use npm.js ${{ matrix.npm-version }}
+        uses: npm/action-setup@v2
+        with:
+          version: ${{ matrix.npm-version }}
+
+      - name: install dependencies and test
+        run: npm install --frozen-lockfile
+
+      - name: build mfe
+        run: npm run build
+
+      - name: deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/microfrontend-base.git
+          npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
