@@ -1,5 +1,6 @@
 {
   "name": "@mfe/root-config",
+  "version": "1.1.0",
   "scripts": {
     "dev": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js,ts,tsx",
