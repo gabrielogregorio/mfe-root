@@ -1,3 +1,5 @@
+# single-spa root app
+
 ```bash
 npm install --global create-single-spa
 ```
