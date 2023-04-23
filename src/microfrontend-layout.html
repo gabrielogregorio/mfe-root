@@ -1,11 +1,11 @@
 <single-spa-router>
-  <main>
-    <route default>
-      <application name="@single-spa/welcome"></application>
-    </route>
+  <application name="@mfe/layout"></application>
 
-    <route path="/microfrontend-base/eris">
-      <application name="@mfe/eris"></application>
-    </route>
-  </main>
+  <route path="/eris">
+    <application name="@mfe/eris"></application>
+  </route>
+
+  <route default>
+    <h1>Página não encontrada</h1>
+  </route>
 </single-spa-router>
