@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "prepare": "husky install",
-    "build": "concurrently npm:build:*",
+    "build": "APP_ENV=production concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "build:types": "tsc"
   },
