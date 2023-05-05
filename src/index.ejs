@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Root Config</title>
 
+    <base href="<%= htmlWebpackPlugin.options.APP_ENV === 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>">
+
     <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
 
     <meta
@@ -29,7 +31,7 @@
       as="script"
     />
 
-    <% if (isLocal) { %>
+
     <script type="systemjs-importmap">
       {
         "imports": {
@@ -41,7 +43,7 @@
         }
       }
     </script>
-    <% } %>
+
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
     <% if (isLocal) { %>

@@ -1,6 +1,7 @@
 const { mergeWithRules } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const packageJson = require("./package.json");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "mfe";
@@ -20,6 +21,10 @@ module.exports = (webpackConfigEnv, argv) => {
       },
     },
   })(defaultConfig, {
+    output: {
+      publicPath:
+        process.env.NODE_ENV === "production" ? packageJson.homepage : "/",
+    },
     // modify the webpack config however you'd like to by adding to this object
     plugins: [
       new HtmlWebpackPlugin({
