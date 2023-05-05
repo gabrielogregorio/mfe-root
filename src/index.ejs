@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Root Config</title>
 
+    <base href="<%= htmlWebpackPlugin.options.APP_ENV === 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>">
+
     <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
 
     <meta
