@@ -23,8 +23,7 @@ module.exports = (webpackConfigEnv, argv) => {
   })(defaultConfig, {
     output: {
       publicPath:
-        // process.env.NODE_ENV === "production" ? packageJson.homepage : "/",
-        packageJson.homepage,
+        process.env.NODE_ENV === "production" ? packageJson.homepage : "/",
     },
     // modify the webpack config however you'd like to by adding to this object
     plugins: [
@@ -32,7 +31,7 @@ module.exports = (webpackConfigEnv, argv) => {
         inject: false,
         template: "src/index.ejs",
         templateParameters: {
-          APP_ENV: "production", //process.env.NODE_ENV,
+          APP_ENV: process.env.NODE_ENV,
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
         },
