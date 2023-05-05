@@ -36,7 +36,8 @@
           "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
           "@mfe/root-config": "//localhost:9000/mfe-root-config.js",
           "@mfe/eris": "//localhost:8500/mfe-eris.js",
-          "@mfe/layout":"//localhost:7000/mfe-layout.js"
+          "@mfe/layout": <%= htmlWebpackPlugin.options.APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-layout/mfe-layout.js"' : '"//localhost:7000/mfe-layout.js"' %>,
+          "@mfe/mfe-mfe-daily-tasks": <%= htmlWebpackPlugin.options.APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/daily-tasks/mfe-mfe-daily-tasks.js"' : '"//localhost:8134/mfe-mfe-daily-tasks.js"' %>
         }
       }
     </script>
