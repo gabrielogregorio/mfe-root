@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Root Config</title>
 
-    <base href="<%= htmlWebpackPlugin.options.APP_ENV !== 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>">
+    <base href="<%= htmlWebpackPlugin.options.APP_ENV === 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>">
 
     <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
 
@@ -36,11 +36,11 @@
     <script type="systemjs-importmap">
       {
         "imports": {
-          "@mfe/mfe-eris":<%= APP_ENV !== 'production' ? '"https://gabrielogregorio.github.io/mfe-eris/mfe-eris.js"' : '"//localhost:8500/mfe-eris.js"' %>,
-          "@mfe/root-config": <%= APP_ENV !== 'production' ? '"https://gabrielogregorio.github.io/mfe-root/mfe-root-config.js"' : '"//localhost:9000/mfe-root-config.js"' %>,
-          "@mfe/layout": <%= APP_ENV !== 'production' ? '"https://gabrielogregorio.github.io/mfe-layout/mfe-layout.js"' : '"//localhost:7000/mfe-layout.js"' %>,
-          "@mfe/mfe-mfe-daily-tasks": <%= APP_ENV !== 'production' ? '"https://gabrielogregorio.github.io/mfe-tasks/mfe-mfe-daily-tasks.js"' : '"//localhost:8134/mfe-mfe-daily-tasks.js"' %>,
-          "@mfe/mfe-mfe-introduction": <%= APP_ENV !== 'production' ? '"https://gabrielogregorio.github.io/mfe-introduction/mfe-mfe-introduction.js"' : '"//localhost:7777/mfe-mfe-introduction.js"' %>
+          "@mfe/mfe-eris":<%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-eris/mfe-eris.js"' : '"//localhost:8500/mfe-eris.js"' %>,
+          "@mfe/root-config": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-root/mfe-root-config.js"' : '"//localhost:9000/mfe-root-config.js"' %>,
+          "@mfe/layout": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-layout/mfe-layout.js"' : '"//localhost:7000/mfe-layout.js"' %>,
+          "@mfe/mfe-mfe-daily-tasks": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-tasks/mfe-mfe-daily-tasks.js"' : '"//localhost:8134/mfe-mfe-daily-tasks.js"' %>,
+          "@mfe/mfe-mfe-introduction": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-introduction/mfe-mfe-introduction.js"' : '"//localhost:7777/mfe-mfe-introduction.js"' %>
         }
       }
     </script>
