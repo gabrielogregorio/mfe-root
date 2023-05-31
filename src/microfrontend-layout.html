@@ -1,33 +1,53 @@
 <single-spa-router>
+  <style>
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 270px;
+      background-color: #2a2d3e;
+      color: #fff;
+      overflow: auto;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+  </style>
+
   <route default>
     <h1>Página não encontrada</h1>
   </route>
 
-  <header>
+  <aside>
     <application name="@mfe/layout"></application>
-  </header>
+  </aside>
 
-  <route path="/" exact>
-    <application name="@mfe/mfe-mfe-introduction"></application>
-  </route>
+  <div class="content">
+    <route path="/" exact>
+      <application name="@mfe/mfe-mfe-introduction"></application>
+    </route>
 
-  <route path="/about" exact>
-    <application name="@mfe/mfe-mfe-introduction"></application>
-  </route>
+    <route path="/about" exact>
+      <application name="@mfe/mfe-mfe-introduction"></application>
+    </route>
 
-  <route path="/games" exact>
-    <application name="@mfe/mfe-mfe-introduction"></application>
-  </route>
+    <route path="/games" exact>
+      <application name="@mfe/mfe-mfe-introduction"></application>
+    </route>
 
-  <route path="/eris" exact>
-    <application name="@mfe/mfe-eris"></application>
-  </route>
+    <route path="/eris" exact>
+      <application name="@mfe/mfe-eris"></application>
+    </route>
 
-  <route path="/tasks" exact>
-    <application name="@mfe/toolkit"></application>
-  </route>
+    <route path="/tasks" exact>
+      <application name="@mfe/toolkit"></application>
+    </route>
 
-  <route path="/remaining-money" exact>
-    <application name="@mfe/toolkit"></application>
-  </route>
+    <route path="/remaining-money" exact>
+      <application name="@mfe/toolkit"></application>
+    </route>
+  </div>
 </single-spa-router>
