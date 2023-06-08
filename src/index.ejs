@@ -16,12 +16,19 @@
     />
     <meta name="importmap-type" content="systemjs-importmap" />
 
+
+    <!-- "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.development.js",
+    "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.development.js",
+    "react-router-dom": "https://cdn.jsdelivr.net/npm/react-router-dom@6.11.1/dist/umd/react-router-dom.development.js" -->
+
     <script type="systemjs-importmap">
       {
         "imports": {
           "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+          "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@4.3.1/lib/system/single-spa-react.min.js",
+
           "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
-          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+           "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
           "react-router-dom": "https://cdn.jsdelivr.net/npm/react-router-dom@6.11.1/dist/umd/react-router-dom.production.min.js"
         }
       }
