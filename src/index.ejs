@@ -55,10 +55,10 @@
     <% } else { %>
     <script
       type="systemjs-importmap"
-      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json"
+      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json?abc=11"
     ></script>
 
-    <script>
+     <script>
       function replaceImportMapToPreventCache() {
         let oldScript = document.querySelector(
           'script[type="systemjs-importmap"]'
@@ -76,8 +76,8 @@
 
         oldScript.parentNode.replaceChild(newScript, oldScript);
       }
-      replaceImportMapToPreventCache()
-    </script>
+      // replaceImportMapToPreventCache()
+    </script> 
 
     <% } %>
 
