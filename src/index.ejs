@@ -42,9 +42,9 @@
 
     <% if (isLocal) { %>
     <script type="systemjs-importmap">
-          {
-            "imports": {
-          "@mfe/mfe-eris":"//localhost:8500/mfe-eris.js",
+      {
+        "imports": {
+          "@mfe/mfe-eris": "//localhost:8500/mfe-eris.js",
           "@mfe/root-config": "//localhost:9000/mfe-root-config.js",
           "@mfe/layout": "//localhost:7000/mfe-layout.js",
           "@mfe/toolkit": "//localhost:8134/mfe-toolkit.js",
@@ -55,8 +55,30 @@
     <% } else { %>
     <script
       type="systemjs-importmap"
-      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json?time=<timestamp>"
+      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json"
     ></script>
+
+    <script>
+      function replaceImportMapToPreventCache() {
+        let oldScript = document.querySelector(
+          'script[type="systemjs-importmap"]'
+        );
+
+        let newScript = document.createElement("script");
+        newScript.type = "systemjs-importmap";
+
+        let timestamp = new Date().getTime();
+        console.log('cache are updated as', timestamp)
+
+        newScript.src =
+          "https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json?time=" +
+          timestamp;
+
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      }
+      replaceImportMapToPreventCache()
+    </script>
+
     <% } %>
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
