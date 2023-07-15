@@ -29,7 +29,7 @@ module.exports = (webpackConfigEnv, argv) => {
     // modify the webpack config however you'd like to by adding to this object
     plugins: [
       new CopyPlugin({
-        patterns: [{ from: "public", to: "public" }],
+        patterns: [{ from: "public", to: "./" }],
       }),
 
       new HtmlWebpackPlugin({
