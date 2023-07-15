@@ -2,6 +2,7 @@ const { mergeWithRules } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageJson = require("./package.json");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "mfe";
@@ -27,6 +28,10 @@ module.exports = (webpackConfigEnv, argv) => {
     },
     // modify the webpack config however you'd like to by adding to this object
     plugins: [
+      new CopyPlugin({
+        patterns: [{ from: "public", to: "public" }],
+      }),
+
       new HtmlWebpackPlugin({
         inject: false,
         template: "src/index.ejs",
