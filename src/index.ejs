@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Root Config</title>
 
-    <base href="<%= htmlWebpackPlugin.options.APP_ENV === 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>">
+    <base
+      href="<%= htmlWebpackPlugin.options.APP_ENV === 'production' ? htmlWebpackPlugin.options.publicPath : '/' %>"
+    />
 
     <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
 
@@ -15,7 +17,6 @@
       content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';"
     />
     <meta name="importmap-type" content="systemjs-importmap" />
-
 
     <!-- "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.development.js",
     "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.development.js",
@@ -28,7 +29,7 @@
           "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@4.3.1/lib/system/single-spa-react.min.js",
 
           "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
-           "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
           "react-router-dom": "https://cdn.jsdelivr.net/npm/react-router-dom@6.11.1/dist/umd/react-router-dom.production.min.js"
         }
       }
@@ -39,21 +40,27 @@
       as="script"
     />
 
-
+    <% if (isLocal) { %>
     <script type="systemjs-importmap">
-      {
-        "imports": {
-          "@mfe/mfe-eris":<%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-eris/mfe-eris.js"' : '"//localhost:8500/mfe-eris.js"' %>,
-          "@mfe/root-config": <%= APP_ENV === 'production' ? '"https://devgreg.vercel.app/mfe-root-config.js"' : '"//localhost:9000/mfe-root-config.js"' %>,
-          "@mfe/layout": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-layout/mfe-layout.js"' : '"//localhost:7000/mfe-layout.js"' %>,
-          "@mfe/toolkit": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-toolkit/mfe-toolkit.js"' : '"//localhost:8134/mfe-toolkit.js"' %>,
-          "@mfe/mfe-mfe-introduction": <%= APP_ENV === 'production' ? '"https://gabrielogregorio.github.io/mfe-introduction/mfe-mfe-introduction.js"' : '"//localhost:7777/mfe-mfe-introduction.js"' %>
+          {
+            "imports": {
+          "@mfe/mfe-eris":"//localhost:8500/mfe-eris.js",
+          "@mfe/root-config": "//localhost:9000/mfe-root-config.js",
+          "@mfe/layout": "//localhost:7000/mfe-layout.js",
+          "@mfe/toolkit": "//localhost:8134/mfe-toolkit.js",
+          "@mfe/introduction": "//localhost:7777/mfe-introduction.js"
         }
       }
     </script>
-
+    <% } else { %>
+    <script
+      type="systemjs-importmap"
+      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json"
+    ></script>
+    <% } %>
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
+
     <% if (isLocal) { %>
     <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
@@ -73,5 +80,3 @@
     ></import-map-overrides-full>
   </body>
 </html>
-
-
