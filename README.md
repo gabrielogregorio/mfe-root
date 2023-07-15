@@ -1,5 +1,7 @@
 # single-spa root app base
 
+https://ogregorio.netlify.app/
+
 ```bash
 npm install --global create-single-spa
 ```
