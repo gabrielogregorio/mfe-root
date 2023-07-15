@@ -4,6 +4,25 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageJson = require("./package.json");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const pluginMovePublicFolderToDist = () => {
+  return new CopyPlugin({
+    patterns: [{ from: "public", to: "./" }],
+  });
+};
+
+const ruleProcessTailwindStyles = {
+  test: /\.css$/i,
+  use: [
+    require.resolve("style-loader", {
+      paths: [require.resolve("webpack-config-single-spa")],
+    }),
+    require.resolve("css-loader", {
+      paths: [require.resolve("webpack-config-single-spa")],
+    }),
+    "postcss-loader",
+  ],
+};
+
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "mfe";
   const defaultConfig = singleSpaDefaults({
@@ -26,11 +45,8 @@ module.exports = (webpackConfigEnv, argv) => {
       publicPath:
         process.env.NODE_ENV === "production" ? packageJson.homepage : "/",
     },
-    // modify the webpack config however you'd like to by adding to this object
     plugins: [
-      new CopyPlugin({
-        patterns: [{ from: "public", to: "./" }],
-      }),
+      pluginMovePublicFolderToDist(),
 
       new HtmlWebpackPlugin({
         inject: false,
@@ -44,20 +60,7 @@ module.exports = (webpackConfigEnv, argv) => {
     ],
 
     module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: [
-            require.resolve("style-loader", {
-              paths: [require.resolve("webpack-config-single-spa")],
-            }),
-            require.resolve("css-loader", {
-              paths: [require.resolve("webpack-config-single-spa")],
-            }),
-            "postcss-loader",
-          ],
-        },
-      ],
+      rules: [ruleProcessTailwindStyles],
     },
   });
 };

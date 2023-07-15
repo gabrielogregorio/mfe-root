@@ -55,30 +55,8 @@
     <% } else { %>
     <script
       type="systemjs-importmap"
-      src="https://raw.githubusercontent.com/gabrielogregorio/mfe-root/main/config/import-map.json?cache=10"
+      src="https://ogregorio.netlify.app/config/import-map.json"
     ></script>
-
-     <script>
-      function replaceImportMapToPreventCache() {
-        let oldScript = document.querySelector(
-          'script[type="systemjs-importmap"]'
-        );
-
-        let newScript = document.createElement("script");
-        newScript.type = "systemjs-importmap";
-
-        let timestamp = new Date().getTime();
-        console.log('cache are updated as', timestamp)
-
-        newScript.src =
-          "https://raw.githubusercontent.com/gabrielogregorio/mfe-config-map/main/import-map.json?time=" +
-          timestamp;
-
-        oldScript.parentNode.replaceChild(newScript, oldScript);
-      }
-      // replaceImportMapToPreventCache()
-    </script> 
-
     <% } %>
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
