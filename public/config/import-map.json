@@ -4,6 +4,6 @@
     "@mfe/root-config": "https://ogregorio.netlify.app/mfe-root-config.js",
     "@mfe/layout": "https://gabrielogregorio.github.io/mfe-layout/v1.3.0/mfe-layout.js",
     "@mfe/toolkit": "https://gabrielogregorio.github.io/mfe-toolkit/v1.0.1/mfe-toolkit.js",
-    "@mfe/introduction": "https://gabrielogregorio.github.io/mfe-introduction/v1.0.0/mfe-introduction.js"
+    "@mfe/introduction": "https://gabrielogregorio.github.io/mfe-introduction/v1.1.0/mfe-introduction.js"
   }
 }
